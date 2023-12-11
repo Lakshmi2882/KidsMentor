@@ -4,13 +4,10 @@ package pageObjects;
 import Base.BasePage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
-import java.util.List;
 
 public class RegistrationPage  {
 
@@ -30,7 +27,8 @@ public class RegistrationPage  {
      By Password=By.name("register_user_password");
      By ConfirmPassword= By.name("register_user_password_re");
 
-    By Submitbutton= By.cssSelector("button.btn > span:nth-child(1)");
+    By Submitbutton= By.xpath("(//span[text()='Sign Up'])[2]");
+    By Enrolltext= By.xpath("//div//h3[text()='Enrolled Courses']");
             //By.xpath("//a[@class='masterstudy-button masterstudy-button_style-primary masterstudy-button_size-sm']//span[text()='Sign Up']");
    public  void openUrl(){
       bp.goToUrl();
@@ -86,12 +84,12 @@ public class RegistrationPage  {
    public void enterUsername(){
 //       WebDriverWait wait= new WebDriverWait(driver, Duration.ofSeconds(20));
 //       wait.until(ExpectedConditions.presenceOfElementLocated(UserName)).sendKeys("Lakshmi");
-      driver.findElement(UserName).sendKeys("Lakshmi");
+      driver.findElement(UserName).sendKeys("Lakshmi456");
    }
 
    public void enterEmail(){
      //  email.sendKeys("Ll@gmail.com");
-       driver.findElement(Emailid).sendKeys("llbb@gmail.com");
+       driver.findElement(Emailid).sendKeys("lll23@gmail.com");
    }
 
    public void enterPassword(){
@@ -106,6 +104,12 @@ public void SubmitButtonlink()
     //   wait.until(ExpectedConditions.presenceOfElementLocated(Submitbutton)).click();
  driver.findElement(Submitbutton).click();
 
+}
+public String VerifyEnrolltext()
+{
+    WebDriverWait wait= new WebDriverWait(driver, Duration.ofSeconds(20));
+    String text=   wait.until(ExpectedConditions.presenceOfElementLocated(Enrolltext)).getText();
+    return text;
 }
 //   public void clickInstructor() {
 //      instructor.click();

@@ -1,33 +1,32 @@
 package stepDefinitions;
 
 
-import Base.BasePage;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
-
-
+import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+
+import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
 import pageObjects.RegistrationPage;
 
-
 public class RegistrationSteps {
-    public  WebDriver driver;
+    public WebDriver driver;
     public RegistrationPage RP;
 
 
 
     public RegistrationSteps(){
 
-//    // System.setProperty("webdriver.firefox.driver", "C:/Users/Nelly/IdeaProjects/DeceSeleniumProject/src/test/resources/driver/geckodriver.exe");
-//   //   driver = new FirefoxDriver();
+  //  System.setProperty("webdriver.firefox.driver", "C:\\Users\\eddan\\SeleniumcucumberPro\\src\\test\\resources\\drivers\\geckodriver.exe");
+  // driver = new FirefoxDriver();
+WebDriverManager.chromedriver().setup();
+driver= new ChromeDriver();
 
-
-        driver= new FirefoxDriver();
+     // driver= new FirefoxDriver();
         driver.manage().window().maximize();
 //        BP= new BasePage(driver);
       RP= new RegistrationPage(driver);
@@ -99,9 +98,14 @@ public void i_enter_password() {
 public void i_enter_confirm_password() {
     RP.enterConfirmPassword();
 }
-    @And("I click on register button")
-    public void i_click_on_register_button() {
-        RP.SubmitButtonlink();
+//
+    @When("I click on Submit button")
+    public void i_click_on_submit_button() {
+RP.SubmitButtonlink();
+    }
+    @Then("Enrolled courses displayed")
+    public void enrolled_courses_displayed() {
+        Assert.assertEquals(RP.VerifyEnrolltext(),"Enrolled Courses");
     }
 //
 //    @And("^I click register instructor$")

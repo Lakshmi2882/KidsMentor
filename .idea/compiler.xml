@@ -7,8 +7,11 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="DeceSeleniumProject" />
+        <module name="SeleniumcucumberPro" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="DeceSeleniumProject" target="21" />
+    </bytecodeTargetLevel>
   </component>
 </project>
